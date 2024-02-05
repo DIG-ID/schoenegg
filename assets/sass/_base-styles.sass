@@ -1,0 +1,44 @@
+:root
+  --swiper-navigation-size: 24px
+  --swiper-theme-color: #fff
+
+::-moz-selection
+  @apply bg-[#dcdcdc] text-black
+
+::selection
+  @apply bg-[#dcdcdc] text-black
+
+html
+  //scroll-behavior: smooth
+
+body
+  text-rendering: optimizelegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  @apply font-walsheimthin
+
+
+html.lenis
+  height: auto
+
+.lenis.lenis-smooth
+  scroll-behavior: auto
+
+.lenis.lenis-smooth [data-lenis-prevent]
+  overscroll-behavior: contain
+
+.lenis.lenis-stopped
+  overflow: hidden
+
+.lenis.lenis-scrolling iframe
+  pointer-events: none
+
+    
+// Grid classes
+.bz-container
+  @apply px-7 md:px-6 xl:px-0 mx-auto xl:max-w-6xl
+
+.bz-grid
+  @apply grid grid-cols-1 md:grid-cols-9 lg:grid-cols-12 md:gap-4 xl:gap-[30px]
+
+
