@@ -19,10 +19,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        'red': '#933032',
+        'red': '#90181B',
         'gold': '#B4A24E',
         'dark-grey': '#262626',
-        'meidum-grey': '#737373',
+        'medium-grey': '#737373',
+        'light-grey': '#ccc',
         'pink': '#e42c5f',
       },
     },

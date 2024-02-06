@@ -1,0 +1,24 @@
+.mobile-menu-toggle
+  @apply w-8 h-8 lg:hidden lg:invisible
+  .bars
+    @apply relative block overflow-hidden h-full w-full
+    .bar
+      @apply block w-8 h-[2px] bg-black absolute transition-all duration-300 ease-in-out opacity-100
+      &:nth-child(1)
+        @apply top-2 left-0
+      &:nth-child(2)
+        @apply top-4 left-0
+      &:nth-child(3)
+        @apply top-6 left-0
+
+#header-main.mobile-menu-open
+  .mobile-menu-toggle
+    .bars
+      .bar
+        @apply block w-8 h-[2px] bg-black absolute
+        &:nth-child(1)
+          @apply rotate-45 translate-y-2
+        &:nth-child(2)
+          @apply opacity-0
+        &:nth-child(3)
+          @apply -rotate-45 -translate-y-2
