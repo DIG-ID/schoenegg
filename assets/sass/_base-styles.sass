@@ -21,6 +21,10 @@ body
 html.lenis
   height: auto
 
+.hs-transition
+  &--default
+    @apply transition-all duration-300 ease-in-out
+
 .lenis.lenis-smooth
   scroll-behavior: auto
 
@@ -36,8 +40,8 @@ html.lenis
     
 // Grid classes
 .hs-container
-  @apply px-7 md:px-6 xl:px-0 mx-auto
+  @apply px-8 sm:px-11 lg:px-0 mx-auto w-full max-w-7xl
 
 .hs-grid
-  @apply grid grid-cols-1 md:grid-cols-9 lg:grid-cols-12 md:gap-4 xl:gap-8
+  @apply grid grid-cols-1 md:grid-cols-9 lg:grid-cols-12 gap-4 lg:gap-8
 

@@ -13,15 +13,21 @@ module.exports = {
     fontFamily: {
       walsheimthin: ['WalsheimThin', 'sans-serif'],
       walsheimlight: ['WalsheimLight', 'sans-serif'],
-      walsheimedium: ['WalsheimThin', 'sans-serif'],
+      walsheimedium: ['WalsheimMedium', 'sans-serif'],
       lyon: ['LyonTextSemibold', 'serif'],
       handwriting: ['LucidaHandwriting', 'cursive'],
     },
+
     extend: {
+      letterSpacing: {
+        wide: '.038em',
+        wider: '.06em',
+      },
       colors: {
         'red': '#90181B',
         'gold': '#B4A24E',
-        'dark-grey': '#262626',
+        'darker-grey': '#262626',
+        'dark-grey': '#464646',
         'medium-grey': '#737373',
         'light-grey': '#ccc',
         'pink': '#e42c5f',

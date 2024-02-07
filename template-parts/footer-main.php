@@ -1,4 +1,4 @@
-<footer class="footer-main lg:pl-64 py-14 bg-dark-grey text-light-grey">
+<footer class="footer-main lg:pl-64 py-14 bg-darker-grey text-light-grey">
 	<div class="hs-container">
 		<div class="hs-grid">
 			<div class="lg:col-span-3">

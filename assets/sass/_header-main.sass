@@ -22,3 +22,55 @@
           @apply opacity-0
         &:nth-child(3)
           @apply -rotate-45 -translate-y-2
+
+
+.menu-main-menu-container
+  #main-menu
+    @apply  lg:pt-4 lg:pb-8 pb-2
+    .menu-item
+      @apply border-b border-b-gold lg:border-none
+      a
+        @apply inline-block font-walsheimthin lg:font-lyon text-[13px] text-[#a5a5a5] lg:text-dark-grey leading-7 lg:leading-8 tracking-[2px] lg:tracking-wide uppercase hover:text-gold py-2 lg:py-0
+        @extend .hs-transition--default
+      &.current-menu-item
+        a
+          @apply text-gold
+
+#header-main
+  .menu-wrapper
+    .wpml-ls
+      border: initial
+      @apply p-0
+      ul
+        @apply pb-2 lg:pb-0
+        li.wpml-ls-item
+          a.wpml-ls-link
+            @apply font-walsheimthin text-[13px] text-[#a5a5a5] lg:text-gold tracking-wider py-2 px-0 mr-2 hover:text-dark-grey
+            @extend .hs-transition--default
+
+  .menu-extras
+    @apply w-full hidden invisible lg:block lg:visible
+    .socials-wrapper
+      @apply flex items-center py-3
+      .social-link
+        @apply mr-4
+        &:hover
+          svg
+            path
+              @apply fill-dark-grey
+        svg
+          @apply object-cover h-4
+          path
+            @apply fill-gold
+            @extend .hs-transition--default
+    &--sc
+      @apply pt-2 pb-8
+    &--links
+      .menu-main-menu-extras-container
+        #main-menu-extras
+          @apply pb-4
+          li.menu-item
+            @apply leading-none
+            a
+              @apply font-walsheimthin text-[13px] text-gold tracking-wide uppercase hover:text-dark-grey
+              @extend .hs-transition--default

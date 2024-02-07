@@ -6,10 +6,9 @@ function hs_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'main-left'   => __( 'Main Menu Left', 'hs' ),
-			'main-right'  => __( 'Main Menu Right', 'hs' ),
-			'menu-footer' => __( 'Menu Footer', 'hs' ),
-			'mobile-menu' => __( 'Mobile Menu', 'hs' ),
+			'main-menu'        => __( 'Main Menu', 'hs' ),
+			'main-menu-extras' => __( 'Main Menu Extras', 'hs' ),
+			'menu-footer'      => __( 'Menu Footer', 'hs' ),
 		)
 	);
 
