@@ -13,7 +13,7 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/home/hosts' );
 			get_template_part( 'template-parts/pages/home/rooms' );
 			get_template_part( 'template-parts/pages/home/restaurant' );
-			get_template_part( 'template-parts/pages/home/events' );
+			get_template_part( 'template-parts/pages/home/bankette' );
 			get_template_part( 'template-parts/pages/home/destination' );
 			get_template_part( 'template-parts/pages/home/about' );
 			get_template_part( 'template-parts/pages/home/testimonials' );

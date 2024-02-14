@@ -1,0 +1,19 @@
+.post-type-archive-zimmer
+  .grid-rooms
+    @extend .hs-transition--default
+    &::after
+      content: ''
+      display: block
+      clear: both
+    .card--zimmer
+      @apply relative block
+
+  .zimmer-filters
+    @apply py-8
+    .button
+      @apply font-walsheimthin text-[15px] leading-[27px] text-medium-grey tracking-[0.05em] px-6 border border-transparent mr-1 last-of-type:mr-0
+      @extend .hs-transition--default
+      &:hover
+        @apply border-darker-grey text-darker-grey
+      &.is-checked
+        @apply border-darker-grey text-darker-grey

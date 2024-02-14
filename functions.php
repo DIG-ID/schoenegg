@@ -102,7 +102,7 @@ if ( ! function_exists( 'hs_get_font_face_styles' ) ) :
 			}
 
 			@font-face {
-				font-family: 'WalsheimMedium;';
+				font-family: 'WalsheimMedium';
 				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff') format('woff');
 				font-style: normal;
 				font-weight: 500;
