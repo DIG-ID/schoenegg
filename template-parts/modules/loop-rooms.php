@@ -1,9 +1,7 @@
-<section class="section-rooms pt-28 pb-16">
-	<div class="hs-container lg:!px-0">
+<section class="section-rooms-filters pt-8">
+	<div class="hs-container">
 		<div class="hs-grid">
-			<div class="col-span-1 md:col-span-12">
-				<h2 class="title__page"><?php the_field( 'archives_zimmer_title', 'options' ); ?></h2>
-				<p class="text__description"><?php the_field( 'archives_zimmer_description', 'options' ); ?></p>
+			<div class="col-span-8">
 				<?php
 				$type_terms = get_terms(
 					array(
@@ -23,23 +21,16 @@
 				?>
 			</div>
 		</div>
+	</div>
+</section>
+<section class="section-rooms pb-16">
+	<div class="hs-container lg:!px-0">
 		<div class="grid-rooms -mx-4">
 			<?php
 			if ( have_posts() ) :
 				while ( have_posts() ) :
 					the_post();
-					?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class( 'card card--zimmer w-full lg:w-1/3 px-4 mb-4' ); ?>>
-						<a href="<?php the_permalink(); ?>">
-							<?php
-							if ( has_post_thumbnail() ) :
-								the_post_thumbnail( 'full', array( 'class' => 'max-w-full object-cover mb-8' ) );
-							endif;
-							?>
-							<h2 class="title__card mb-4"><?php the_title(); ?></h2>
-						</a>
-					</article>
-					<?php
+					get_template_part( 'template-parts/components/card-rooms' );
 				endwhile;
 			endif;
 			?>
