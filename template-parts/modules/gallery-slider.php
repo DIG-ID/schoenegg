@@ -1,4 +1,4 @@
-<section class="section-gallery-hero h-[85svh] bg-slate-50 mb-12 overflow-hidden">
+<section class="section-gallery-hero h-[75svh] bg-slate-50 mb-12 overflow-hidden">
 	<div class="swiper galleryHeroSwiper h-full">
 		<div class="swiper-wrapper h-full">
 			<?php

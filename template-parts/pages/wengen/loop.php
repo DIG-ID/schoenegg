@@ -1,4 +1,4 @@
-<section class="section-wengen">
+<section class="section-wengen py-36">
 	<div class="hs-container">
 		<div class="hs-grid">
 			<?php
@@ -8,21 +8,21 @@
 					$wimage = get_sub_field( 'image' );
 					$wlink   = get_sub_field( 'link' );
 					?>
-					<article class="card card--wengen col-span-1 md:col-span-6">
+					<article class="card card--wengen col-span-1 md:col-span-6 mb-16">
 						<?php
 						if ( $wimage ) :
 							echo wp_get_attachment_image( $wimage, 'full', false, array( 'class' => 'max-w-full object-cover' ) );
 						endif;
 						?>
-						<h2 class="title__card title__card--no-hover"><?php the_sub_field( 'title' ); ?></h2>
-						<p class="text__description"><?php the_sub_field( 'text' ); ?></p>
+						<h2 class="title__card title__card--no-hover py-6"><?php the_sub_field( 'title' ); ?></h2>
+						<p class="text__description mb-6"><?php the_sub_field( 'text' ); ?></p>
 						<?php
 						if ( $wlink ) :
 							$link_url    = $wlink['url'];
 							$link_title  = $wlink['title'];
 							$link_target = $wlink['target'] ? $wlink['target'] : '_self';
 							?>
-							<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+							<a class="btn__secondary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 							<?php
 						endif;
 						?>

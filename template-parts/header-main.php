@@ -1,4 +1,4 @@
-<header id="header-main" class="header-main fixed w-full left-0 top-0 lg:bottom-0 lg:w-auto lg:min-w-64 lg:max-w-64 bg-white lg:border-r lg:border-r-gold transition-all duration-500 ease-in-out border-b border-b-gold lg:border-b-0" itemscope itemtype="http://schema.org/WebSite">
+<header id="header-main" class="header-main fixed w-full left-0 top-0 lg:bottom-0 lg:w-auto lg:min-w-64 lg:max-w-64 bg-white lg:border-r lg:border-r-gold transition-all duration-500 ease-in-out border-b border-b-gold lg:border-b-0 z-10" itemscope itemtype="http://schema.org/WebSite">
 	<nav class="navigation-main relative flex w-full justify-between items-center h-16 lg:h-auto px-8 sm:px-11 lg:flex-col lg:justify-start lg:items-start lg:py-12 lg:px-8 " role="navigation" aria-label="<?php esc_attr_e( 'main navigation', 'az' ); ?>">
 		<div class="site-branding lg:mb-11">
 			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url" class="navbar-brand custom-logo-link hidden invisible lg:inline-block lg:visible"><?php do_action( 'theme_logo' ); ?></a>
