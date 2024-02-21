@@ -24,11 +24,11 @@
 		<div class="menu-extras">
 			<?php do_action( 'socials' ); ?>
 			<hr class="hs-divider">
-			<div class="menu-extras--sc flex items-end">
+			<div class="menu-extras--sc flex items-baseline">
 				<?php
 					global $icon_mapping;
-					$api_key = '9a322700df9c510b0352750f18f197dd';
-					$location = 'Wengen, CH';
+					$api_key = get_field( 'navigation_weather_api_key', 'options' );
+					$location = get_field( 'navigation_weather_location_name', 'options' );
 					$weather_data = get_weather_data($location, $api_key);
 
 					if ($weather_data) {
@@ -50,13 +50,13 @@
 					} else {
 						if (isset($icon_mapping[$icon_code])) {
 							$custom_icon = $icon_mapping[$icon_code];
-							echo "<img class=\"w-9\" src='$custom_icon' alt='Weather Icon'>";
+							echo "<img class=\"w-7\" src='$custom_icon' alt='Weather Icon'>";
 						} else {
 							// Fallback to OpenWeatherMap's default icon
 							$default_icon_url = "http://openweathermap.org/img/wn/$icon_code.png";
-							echo "<img class=\"w-9\" src='$default_icon_url' alt='Weather Icon'>";
+							echo "<img class=\"w-7\" src='$default_icon_url' alt='Weather Icon'>";
 						}
-						echo "<p class=\"ml-2\"><span class=\"font-walsheimthin text-sm\">" . round($temperature) . "</span> <span class=\"font-lyon text-sm\">°C</span></p>";
+						echo "<p class=\"ml-4 text-sm\"><span class=\"font-walsheimthin\">" . round($temperature) . "</span> <span class=\"font-lyon\">°C</span></p>";
 					}
 				?>
 			</div>
