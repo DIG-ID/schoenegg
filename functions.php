@@ -181,6 +181,17 @@ function hs_theme_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'hs_theme_enqueue_styles' );
 
+//openweathermap api connection
+function get_weather_data($location, $api_key) {
+    $url = "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$api_key&units=metric";
+    $response = wp_remote_get($url);
+    if (is_wp_error($response)) {
+        return false;
+    }
+    $body = wp_remote_retrieve_body($response);
+    return json_decode($body, true);
+}
+
 // Google maps
 function my_acf_init() {
 	acf_update_setting( 'google_api_key', 'AIzaSyCB2RShyxiN7xPsQy1QI_SbqXXjW5p08S0' );

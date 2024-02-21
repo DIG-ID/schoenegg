@@ -24,12 +24,32 @@
 		<div class="menu-extras">
 			<?php do_action( 'socials' ); ?>
 			<hr class="hs-divider">
-			<?php
-			$sc = get_field( 'navigation_weather_shortcode', 'options' );
-			if ( $sc ) :
-				echo '<div class="menu-extras--sc">' . do_shortcode( $sc ) . '</div>';
-			endif;
-			?>
+			<div class="menu-extras--sc flex items-center">
+				<?php
+					$api_key = '9a322700df9c510b0352750f18f197dd';
+					$location = 'Wengen, CH'; // Specify the location
+					$weather_data = get_weather_data($location, $api_key);
+
+					if ($weather_data) {
+						$weather_icon = $weather_data['weather'][0]['icon'];
+						$temperature = $weather_data['main']['temp'];
+					};
+
+					$cache_key = 'weather_data_' . sanitize_title($location);
+					$weather_data = get_transient($cache_key);
+
+					if (!$weather_data) {
+						$weather_data = get_weather_data($location, $api_key);
+						set_transient($cache_key, $weather_data, HOUR_IN_SECONDS); // Cache for 1 hour
+					}
+					if (!$weather_data) {
+						echo "Failed to retrieve weather data.";
+					} else {
+						echo "<img src='http://openweathermap.org/img/wn/$weather_icon.png' alt='Weather Icon'>";
+						echo "<p class=\"ml-2\">" . round($temperature) . " °C</p>";
+					}
+				?>
+			</div>
 			<div class="menu-extras--links">
 				<?php
 				wp_nav_menu(
