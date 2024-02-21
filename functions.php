@@ -182,6 +182,17 @@ function hs_theme_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'hs_theme_enqueue_styles' );
 
 //openweathermap api connection
+$icon_mapping = array(
+    '01d' => esc_url( get_template_directory_uri() . '/assets/weather/sun.svg' ),
+    '02d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'03d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'04d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'09d' => esc_url( get_template_directory_uri() . '/assets/weather/drizzle.svg' ),
+	'10d' => esc_url( get_template_directory_uri() . '/assets/weather/rain.svg' ),
+	'11d' => esc_url( get_template_directory_uri() . '/assets/weather/lightning.svg' ),
+	'13d' => esc_url( get_template_directory_uri() . '/assets/weather/snow.svg' ),
+	'50d' => esc_url( get_template_directory_uri() . '/assets/weather/fog.svg' ),
+);
 function get_weather_data($location, $api_key) {
     $url = "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$api_key&units=metric";
     $response = wp_remote_get($url);

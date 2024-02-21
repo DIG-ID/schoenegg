@@ -24,29 +24,39 @@
 		<div class="menu-extras">
 			<?php do_action( 'socials' ); ?>
 			<hr class="hs-divider">
-			<div class="menu-extras--sc flex items-center">
+			<div class="menu-extras--sc flex items-end">
 				<?php
+					global $icon_mapping;
 					$api_key = '9a322700df9c510b0352750f18f197dd';
-					$location = 'Wengen, CH'; // Specify the location
+					$location = 'Wengen, CH';
 					$weather_data = get_weather_data($location, $api_key);
 
 					if ($weather_data) {
-						$weather_icon = $weather_data['weather'][0]['icon'];
+						$icon_code = $weather_data['weather'][0]['icon'];
 						$temperature = $weather_data['main']['temp'];
 					};
 
 					$cache_key = 'weather_data_' . sanitize_title($location);
 					$weather_data = get_transient($cache_key);
 
+					// Cache for 1 hour
 					if (!$weather_data) {
 						$weather_data = get_weather_data($location, $api_key);
-						set_transient($cache_key, $weather_data, HOUR_IN_SECONDS); // Cache for 1 hour
+						set_transient($cache_key, $weather_data, HOUR_IN_SECONDS);
 					}
+					//Display
 					if (!$weather_data) {
 						echo "Failed to retrieve weather data.";
 					} else {
-						echo "<img src='http://openweathermap.org/img/wn/$weather_icon.png' alt='Weather Icon'>";
-						echo "<p class=\"ml-2\">" . round($temperature) . " °C</p>";
+						if (isset($icon_mapping[$icon_code])) {
+							$custom_icon = $icon_mapping[$icon_code];
+							echo "<img class=\"w-9\" src='$custom_icon' alt='Weather Icon'>";
+						} else {
+							// Fallback to OpenWeatherMap's default icon
+							$default_icon_url = "http://openweathermap.org/img/wn/$icon_code.png";
+							echo "<img class=\"w-9\" src='$default_icon_url' alt='Weather Icon'>";
+						}
+						echo "<p class=\"ml-2\"><span class=\"font-walsheimthin text-sm\">" . round($temperature) . "</span> <span class=\"font-lyon text-sm\">°C</span></p>";
 					}
 				?>
 			</div>
