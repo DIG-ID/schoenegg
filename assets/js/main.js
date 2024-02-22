@@ -1,4 +1,6 @@
-import "./navigation";
+
+import "./gsap";
+import "./lenis"
 import "./swiper";
 import "./isotope";
-import "./gsap";
+import "./navigation";

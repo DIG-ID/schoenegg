@@ -1,61 +1,66 @@
+import { lenis } from './lenis.js';
 // wait until DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   //wait until images, links, fonts, stylesheets, and js is loaded
   window.addEventListener("load", () => {
 
-    //hide and show navigation on scroll
-    var prevScrollpos = window.scrollY;
-    var scrolled = false; // Flag to track if user has scrolled
-    
-    // You can set buffer to the desired distance from the top
-    var buffer = 100;
-    
-    // Function to handle scroll behavior
-    function handleScroll() {
-      var currentScrollPos = window.scrollY;
-    
-      // Check if the viewport width is 1024px or less
-      if ($(window).width() <= 1024) {
-        // Check if the user has scrolled for the first time
-        if (!scrolled) {
-          // Update flag to indicate user has scrolled for the first time
-          scrolled = true;
-          return; // Exit the function without hiding the navigation bar
+    if ($(window).width() <= 1024) {
+      let buffer = 200; // change this to the amount of px you want the user to scroll before the sidebar moves
+
+      let lastScrollTop = 0; // to keep track of the last scroll position
+      
+      lenis.on("scroll", () => {
+      
+        let goesTo = lenis.animate.to;
+        let goesFrom = lenis.animate.from;
+        let current = lenis.animatedScroll;
+      
+        //console.log(current);
+      
+        if (goesFrom < buffer && goesTo >= buffer) {
+          // The user scrolled down from a position less than the buffer to a position greater than or equal to the buffer
+          $("#header-main").css('top', "-100%");
+        } else if (goesFrom >= buffer && goesTo < buffer) {
+          // The user scrolled up from a position greater than or equal to the buffer to a position less than the buffer
+          $("#header-main").css('top', "0");
+        } else if (goesTo < lastScrollTop) {
+          // The user scrolled up
+          $("#header-main").css('top', "0");
+        } else if (goesTo > lastScrollTop && goesTo > buffer) {
+          // The user scrolled down from a position greater than the buffer
+          $("#header-main").css('top', "-100%");
         }
-    
-        // Check if the user has scrolled a certain distance away from the top
-        if (currentScrollPos > buffer) {
-          if (prevScrollpos > currentScrollPos) {
-            $("#header-main").css('top', '0');
-          } else {
-            $("#header-main").css('top', '-100%');
-          }
-          prevScrollpos = currentScrollPos;
-        }
-      }
+      
+        // Update the last scroll position
+        lastScrollTop = goesTo;
+      
+      });
+      
     }
-    
-    // Attach scroll event listener
-    $(window).on('scroll', handleScroll);
-    
-    // Attach resize event listener
     $(window).on('resize', function() {
-      // Call handleScroll function on window resize
-      handleScroll();
+      if ($(window).width() > 1024) {
+        $("#header-main").css('top', "0");
+      }
     });
     
-    
 
-    
-
-    /* Hamburguer toogle */ 
+    /* Hamburguer toggle */
     const $toggleBtn = $('.mobile-menu-toggle')
-
     $toggleBtn.on('click', (e) => {
       $('#header-main').toggleClass('mobile-menu-open');
-      //$('body').toggleClass('mega-menu-open');
+      
+      // Check if the mobile menu is open
+      if ($('#header-main').hasClass('mobile-menu-open')) {
+        // If the mobile menu is open, prevent scrolling
+        $('body').css('overflow', 'hidden');
+      } else {
+        // If the mobile menu is closed, allow scrolling
+        $('body').css('overflow', 'auto');
+      }
+
       $('.menu-wrapper').slideToggle(300);
     });
+
 
   }, false);
 });

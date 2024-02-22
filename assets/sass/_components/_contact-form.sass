@@ -1,0 +1,24 @@
+.wpcf7
+  .wpcf7-form
+    h3
+      @apply font-lyon text-[30px] leading-8 lg:text-[44px] lg:leading-[54px] text-[#252525] whitespace-pre-line mt-6 mb-12
+    label
+      @apply font-walsheimthin font-normal text-base text-medium-grey tracking-wider hyphens-auto mb-6 block w-full
+      .wpcf7-form-control-wrap
+        .wpcf7-form-control
+          @apply border border-medium-grey mt-2 p-4 rounded-none text-sm text-[#818181] font-walsheimlight bg-white block w-full focus:outline-none
+          //&.wpcf7-text,
+          //&.wpcf7-tel,
+          //&.wpcf7-email,
+          //&.wpcf7-number,
+          //&.wpcf7-textarea
+        .wpcf7-not-valid-tip
+          @apply mt-2 text-sm font-bold
+    .wpcf7-form-control.wpcf7-submit
+      @apply bg-gold text-white border border-gold uppercase text-center text-sm leading-8 tracking-[-0.1px] inline-block px-6 py-1 w-full max-w-[80%] whitespace-nowrap hover:bg-[#464646] hover:border-[#464646] cursor-pointer
+      @extend .hs-transition--default
+    .wpcf7-spinner
+      @apply mx-0 ml-2 translate-y-2
+    &.invalid
+      .wpcf7-response-output
+        @apply bg-[#f1c40f] text-white font-walsheimthin uppercase py-6 px-8 text-base leading-8 border-none tracking-wider mx-0 mb-0

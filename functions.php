@@ -183,8 +183,8 @@ add_action( 'wp_enqueue_scripts', 'hs_theme_enqueue_styles' );
 
 //openweathermap api connection
 $icon_mapping = array(
-    '01d' => esc_url( get_template_directory_uri() . '/assets/weather/sun.svg' ),
-    '02d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'01d' => esc_url( get_template_directory_uri() . '/assets/weather/sun.svg' ),
+	'02d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
 	'03d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
 	'04d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
 	'09d' => esc_url( get_template_directory_uri() . '/assets/weather/drizzle.svg' ),
@@ -193,14 +193,14 @@ $icon_mapping = array(
 	'13d' => esc_url( get_template_directory_uri() . '/assets/weather/snow.svg' ),
 	'50d' => esc_url( get_template_directory_uri() . '/assets/weather/fog.svg' ),
 );
-function get_weather_data($location, $api_key) {
-    $url = "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$api_key&units=metric";
-    $response = wp_remote_get($url);
-    if (is_wp_error($response)) {
-        return false;
-    }
-    $body = wp_remote_retrieve_body($response);
-    return json_decode($body, true);
+function get_weather_data( $location, $api_key ) {
+	$url = "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$api_key&units=metric";
+	$response = wp_remote_get( $url );
+	if ( is_wp_error( $response ) ) {
+		return false;
+	}
+	$body = wp_remote_retrieve_body( $response );
+	return json_decode( $body, true );
 }
 
 // Google maps
@@ -211,6 +211,11 @@ function my_acf_init() {
 /*if ( is_page_template( 'page-templates/page-contact.php' ) || is_admin() ) :
 	add_action( 'acf/init', 'my_acf_init' );
 endif;*/
+
+/**
+ * Remove <p> Tag From Contact Form 7.
+ */
+add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 /**
  * Lowers the metabox priority to 'core' for Yoast SEO's metabox.

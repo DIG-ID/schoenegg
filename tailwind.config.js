@@ -32,6 +32,9 @@ module.exports = {
         'light-grey': '#ccc',
         'pink': '#e42c5f',
       },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      }
     },
   },
   plugins: [
