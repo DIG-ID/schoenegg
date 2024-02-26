@@ -18,7 +18,7 @@
     // Define custom map style.
     var mapStyle = [
       {
-        "featureType": "administrative.land_parcel",
+        "featureType": "administrative",
         "elementType": "labels",
         "stylers": [
           {
@@ -28,7 +28,16 @@
       },
       {
         "featureType": "poi",
-        "elementType": "labels.text",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "labels",
         "stylers": [
           {
             "visibility": "off"
@@ -48,7 +57,7 @@
   
     // Create gerenic map.
     var mapArgs = {
-      zoom        : $el.data('zoom') || 12,
+      zoom        : 17,
       mapTypeId   : google.maps.MapTypeId.ROADMAP,
       fullscreenControl: false,
       streetViewControl: false,
@@ -64,6 +73,22 @@
     $markers.each(function(){
       initMarker( $(this), map );
     });
+
+    
+function initMarker($marker, map) {
+    var latlng = new google.maps.LatLng($marker.attr('data-lat'), $marker.attr('data-lng'));
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        icon: {
+            url: '../wp-content/themes/schoenegg/assets/images/map-marker-schonegg.svg',
+            scaledSize: new google.maps.Size(46, 63) // Set the size here
+        },
+        title: $marker.attr('data-title')
+    });
+
+    map.markers.push(marker);
+}
   
     // Center map based on markers.
     centerMap( map );
