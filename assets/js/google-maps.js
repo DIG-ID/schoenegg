@@ -57,7 +57,7 @@
   
     // Create gerenic map.
     var mapArgs = {
-      zoom        : 17,
+      zoom        : 18,
       mapTypeId   : google.maps.MapTypeId.ROADMAP,
       fullscreenControl: false,
       streetViewControl: false,

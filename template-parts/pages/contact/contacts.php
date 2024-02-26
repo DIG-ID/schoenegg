@@ -7,7 +7,7 @@
 			<div class="col-span-1 md:col-span-5">
 				<div class="text__area"><?php the_field( 'contacts_address' ); ?></div>
 				<div class="text__area"><p><?php esc_html_e( 'Tel: ', 'hs' ) ?><a class="!no-underline !text-[#737373]" href="tel:<?php the_field( 'contacts_phone' ); ?>"><?php the_field( 'contacts_phone' ); ?></a></p></div>
-				<div class="text__area"><p><?php esc_html_e( 'Fax: ', 'hs' ) ?><?php the_field( 'contacts_phone' ); ?></p></div>
+				<div class="text__area"><p><?php esc_html_e( 'Fax: ', 'hs' ) ?><?php the_field( 'contacts_fax' ); ?></p></div>
 				<div class="text__area mb-8"><p><a class="!no-underline !text-[#737373]" href="mailto:<?php the_field( 'contacts_e-mail' ); ?>"><?php the_field( 'contacts_e-mail' ); ?></a></p></div>
 				<div class="text__area"><p><b><?php esc_html_e( 'Ihr Gastgeber', 'hs' ) ?></b><br><?php the_field( 'contacts_host_name' ); ?></p></div>
             </div>
