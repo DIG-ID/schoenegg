@@ -33,7 +33,7 @@
 						if( have_rows( 'footer_partner_logos', 'options' ) ):
 							while( have_rows( 'footer_partner_logos', 'options' ) ) : the_row(); ?>
 							<li>
-								<a class="no-underline" href="<?php the_sub_field( 'link' ); ?>"><?php the_sub_field( 'title' ); ?></a>
+								<a class="no-underline" href="<?php the_sub_field( 'link' ); ?>" target="_blank"><?php the_sub_field( 'title' ); ?></a>
 							</li>
 							<?php endwhile;
 						endif; ?>
@@ -44,16 +44,18 @@
 				<div class="col-span-1 md:col-span-2 flex items-center justify-end">
 					<img src="/wp-content/uploads/PRIX-BIENVENU-2018_Top100_DE.png" alt="award logo" title="award logo">
 				</div>
-				<div class="col-span-1 md:col-span-2 flex justify-center items-baseline">
+				<div class="col-span-1 md:col-span-2 flex justify-end items-baseline">
 					<?php
 					if( have_rows( 'footer_partner_logos', 'options' ) ):
 						while( have_rows( 'footer_partner_logos', 'options' ) ) : the_row(); ?>
-							<?php
-							$image = get_sub_field( 'image' );
-							if ( $image ) :
-								echo wp_get_attachment_image( $image, 'full', false, array( 'class' => 'w-1/2 object-cover my-6' ) );
-							endif;
-							?>
+							<a href="<?php the_sub_field( 'link' ); ?>" target="_blank">
+								<?php
+								$image = get_sub_field( 'image' );
+								if ( $image ) :
+									echo wp_get_attachment_image( $image, 'full', false, array( 'class' => 'w-full object-cover my-6' ) );
+								endif;
+								?>
+							</a>
 						<?php endwhile;
 					endif; ?>
 				</div>
