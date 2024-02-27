@@ -35,7 +35,7 @@ function hs_theme_setup() {
 	update_option( 'large_size_w', 1920 );
 	update_option( 'large_size_h', 800 );
 
-	//add_image_size( 'main-header-image', 1594, 436, array( 'center', 'center' ) );
+	add_image_size( 'image-square', 1024, 1024, array( 'center', 'center' ) );
 
 	//set_post_thumbnail_size( 500, 350, 'center', 'center' );
 
