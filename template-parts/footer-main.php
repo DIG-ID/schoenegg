@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-span-1 md:col-span-6 lg:col-span-3 grid grid-cols-1 md:grid-cols-2">
 				<div class="col-span-1 md:col-span-2 flex items-center justify-start lg:justify-end mt-9 md:mt-0">
-					<img src="/wp-content/uploads/PRIX-BIENVENU-2018_Top100_DE.png" alt="award logo" title="award logo">
+					<img class="mr-0 lg:mr-6" src="/wp-content/uploads/PRIX-BIENVENU-2018_Top100_DE.png" alt="award logo" title="award logo">
 				</div>
 				<div class="col-span-1 md:col-span-2 flex justify-start lg:justify-end items-baseline">
 					<?php
