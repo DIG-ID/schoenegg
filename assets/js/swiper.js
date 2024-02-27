@@ -54,6 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}
 
+		if ($('.galleryHeroSwiperLow').length) {
+			var galleryHeroSwiperLow = new Swiper(".galleryHeroSwiperLow", {
+				loop: true,
+				spaceBetween: 0,
+				slidesPerView: 1,
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+			});
+		}
+
 
 	}, false);
 });
