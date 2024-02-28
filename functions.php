@@ -192,9 +192,13 @@ add_action( 'acf/init', 'hs_theme_google_map_init' );
 //openweathermap api connection
 $icon_mapping = array(
 	'01d' => esc_url( get_template_directory_uri() . '/assets/weather/sun.svg' ),
+	'01n' => esc_url( get_template_directory_uri() . '/assets/weather/sun.svg' ),
 	'02d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'02n' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
 	'03d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'03n' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
 	'04d' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
+	'04n' => esc_url( get_template_directory_uri() . '/assets/weather/cloud-sun.svg' ),
 	'09d' => esc_url( get_template_directory_uri() . '/assets/weather/drizzle.svg' ),
 	'10d' => esc_url( get_template_directory_uri() . '/assets/weather/rain.svg' ),
 	'11d' => esc_url( get_template_directory_uri() . '/assets/weather/lightning.svg' ),
