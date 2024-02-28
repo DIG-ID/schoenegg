@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (document.body.classList.contains("page-template-page-home")) {
 			let content = gsap.utils.toArray([".hero-swiper-subtitle",".hero-swiper-title", ".hero-swiper-btn" ]);
-
-
+			let isTransitioning = false;
+		
 			var heroSwiper = new Swiper(".heroSwiper", {
 				slidesPerView: 1,
 				loop: true,
@@ -18,42 +18,62 @@ document.addEventListener("DOMContentLoaded", () => {
 					el: ".swiper-pagination",
 					dynamicBullets: true,
 				},
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-				},
 				autoplay: {
-					delay: 5000,
+					delay: 8000,
 					disableOnInteraction: false,
 				},
 				on: {
 					init: function () {
-						gsap.fromTo(content, { y: '200px', opacity: 0, autoAlpha: 0 }, { y: 0, opacity: 1, autoAlpha: 1, duration: 1, stagger: 0.2 });
+						gsap.set(content, { opacity: 0, y: 20 }); // Initial state
+						isTransitioning = true;
+						console.log(isTransitioning);
+						gsap.to(content, { opacity: 1, y: 0, duration: 0.3, stagger: 0.2 }); // Fade in on init
+						setTimeout(function() {
+							isTransitioning = false;
+							console.log(isTransitioning);
+						}, 3000);
+						setTimeout(function () {
+							gsap.to(content, { opacity: 0, y: -20, duration: 0.5 }); // Fade out
+						}, 6000);
 					},
-					navigationNext: function () {
-						//console.log('next button click');
-
-
-					},
-					navigationPrev: function () {
-						//console.log('prev button click');
-
-
-					},
-					beforeSlideChangeStart: function() {
-
-						gsap.fromTo(content, { y: 0, opacity: 1, autoAlpha: 1, duration: 1, stagger: 0.2 }, { y: '200px', opacity: 0, autoAlpha: 0 });
-
+					slideChangeTransitionStart: function() {
+						//gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
 					},
 					slideChangeTransitionEnd: function() {
-
-						gsap.fromTo(content, { y: '200px', opacity: 0, autoAlpha: 0 }, { y: 0, opacity: 1, autoAlpha: 1, duration: 1, stagger: 0.2 });
-
-
-					},
+						isTransitioning = true;
+						gsap.to(content, { opacity: 1, y: 0, duration: 0.3, stagger: 0.2 }); // Fade in after transition
+						setTimeout(function() {
+							isTransitioning = false;
+							console.log(isTransitioning);
+						}, 3000);
+						setTimeout(function () {
+							gsap.to(content, { opacity: 0, y: -20, duration: 0.5 }); // Fade out
+						}, 6000);
+					}
 				}
-
 			});
+		
+			document.querySelector(".swiper-button-next").addEventListener("click", function() {
+				if (!isTransitioning) {
+					console.log('next button click');
+					isTransitioning = true;
+					gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
+					heroSwiper.autoplay.stop(); // Stop autoplay during the delay
+					setTimeout(function() {
+						heroSwiper.slideNext();
+						isTransitioning = false;
+						heroSwiper.autoplay.start(); // Restart autoplay after the delay
+					}, 1500); // Adjust the delay time (in milliseconds) as needed
+				}
+			});
+		
+			
+
+
+
+		
+		
+		
 
 			/*function enableNavigation() {
 				heroSwiper.allowSlideNext = true;
