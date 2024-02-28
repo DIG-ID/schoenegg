@@ -15,8 +15,6 @@ gsap.ticker.lagSmoothing(0);
 
 $(function() {
 
-
-
   /*****************************************
    *                                       *
    *               Home Page               *
@@ -35,8 +33,5 @@ $(function() {
 
     tl.fromTo('.parallax-bg', { yPercent: -10}, { yPercent: -40, ease: 'none' });*/
   };
-
-
-
 
 });
