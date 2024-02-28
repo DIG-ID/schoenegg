@@ -58,12 +58,25 @@ document.addEventListener("DOMContentLoaded", () => {
 					console.log('next button click');
 					isTransitioning = true;
 					gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
-					heroSwiper.autoplay.stop(); // Stop autoplay during the delay
+					heroSwiper.autoplay.stop();
 					setTimeout(function() {
 						heroSwiper.slideNext();
 						isTransitioning = false;
-						heroSwiper.autoplay.start(); // Restart autoplay after the delay
-					}, 1500); // Adjust the delay time (in milliseconds) as needed
+						heroSwiper.autoplay.start();
+					}, 1500);
+				}
+			});
+			document.querySelector(".swiper-button-prev").addEventListener("click", function() {
+				if (!isTransitioning) {
+					console.log('prev button click');
+					isTransitioning = true;
+					gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
+					heroSwiper.autoplay.stop(); 
+					setTimeout(function() {
+						heroSwiper.slidePrev();
+						isTransitioning = false;
+						heroSwiper.autoplay.start(); 
+					}, 1500); 
 				}
 			});
 		
