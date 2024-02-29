@@ -5,7 +5,7 @@
 				<h1 class="title__page"><?php the_title(); ?></h1>
 				<div class="text__area mb-10"><?php the_content(); ?></div>
 				<div class="zimmer-buttons flex flex-col gap-y-4 md:flex-row md:gap-x-4 lg:gap-x-8 mb-8 md:mb-0">
-					<button class="btn__primary"><?php esc_html_e( 'Zimmer Buchen', 'hs' ); ?></button>
+					<button onclick="wbeOpenOverlay()" class="btn__primary"><?php esc_html_e( 'Zimmer Buchen', 'hs' ); ?></button>
 					<a class="btn__secondary" href="<?php echo esc_url( get_post_type_archive_link( 'zimmer' ) ); ?>"><?php esc_html_e( 'Übersicht', 'hs' ); ?></a>
 				</div>
 			</div>
