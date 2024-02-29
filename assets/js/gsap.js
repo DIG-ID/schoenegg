@@ -1,14 +1,14 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from '@studio-freight/lenis';
+import { lenis } from './lenis.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 //GSAP ScrollTrigger integration
-Lenis.on('scroll', ScrollTrigger.update);
+lenis.on('scroll', ScrollTrigger.update);
 
 gsap.ticker.add((time)=>{
-  Lenis.raf(time * 1000)
+  lenis.raf(time * 1000)
 });
 
 gsap.ticker.lagSmoothing(0);
