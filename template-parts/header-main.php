@@ -62,5 +62,7 @@
 			</span>
 		</button>
 	</nav>
-
 </header>
+<div id="booking-banner" class="booking-banner hidden lg:block fixed top-1/2 right-0 z-50 w-72 transition-transform duration-300 ease-in-out">
+	<?php get_template_part( 'template-parts/components/booking-banner' ); ?>
+</div>

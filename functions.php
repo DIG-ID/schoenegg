@@ -220,9 +220,11 @@ function my_acf_init() {
 	acf_update_setting( 'google_api_key', 'AIzaSyCB2RShyxiN7xPsQy1QI_SbqXXjW5p08S0' );
 }
 
-/*if ( is_page_template( 'page-templates/page-contact.php' ) || is_admin() ) :
-	add_action( 'acf/init', 'my_acf_init' );
-endif;*/
+//Booking System
+function hopa_wbe() {
+	wp_enqueue_script( 'script-name', 'https://res-online.ch/wbePlus/incubator.js.php?hotelID=3074&username=WBEPlus&password=Jru4WrSx', array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'hopa_wbe' );
 
 /**
  * Remove <p> Tag From Contact Form 7.
