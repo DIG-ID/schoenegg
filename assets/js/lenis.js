@@ -3,7 +3,7 @@ import Lenis from '@studio-freight/lenis';
 //Lenis configuration
 export const lenis = new Lenis({
   //content: document.querySelector("#foo:bar")
-  duration: 1.2,
+  duration: 1,
   smooth: true,
   //easing: easeOutExpo(),
 });

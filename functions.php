@@ -117,7 +117,7 @@ if ( ! function_exists( 'hs_get_font_face_styles' ) ) :
 
 			@font-face {
 				font-family: 'LucidaHandwriting';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/Lucida-Handwriting/LHANDW.ttf') format('truetype');
+				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/Lucida-Handwriting/LHANDW.TTF') format('truetype');
 				font-weight: normal;
 				font-style: normal;
 			}
@@ -138,7 +138,7 @@ if ( ! function_exists( 'hs_preload_webfonts' ) ) :
 		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Light.woff" as="font" type="font/woff" crossorigin>
 		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff" as="font" type="font/woff" crossorigin>
 		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/LyonText/LyonText-Semibold.woff" as="font" type="font/woff" crossorigin>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/Lucida-Handwriting/LHANDW.ttf" as="font" type="font/ttf" crossorigin>
+		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/Lucida-Handwriting/LHANDW.TTF" as="font" type="font/ttf" crossorigin>
 		<?php
 	}
 
