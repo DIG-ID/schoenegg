@@ -24,17 +24,17 @@
           @apply -rotate-45 -translate-y-2
 
 
-.menu-main-menu-container
-  #main-menu
-    @apply  lg:pt-4 lg:pb-8 pb-2
-    .menu-item
-      @apply border-b border-b-gold lg:border-none
+
+#main-menu
+  @apply  lg:pt-4 lg:pb-8 pb-2
+  .menu-item
+    @apply border-b border-b-gold lg:border-none
+    a
+      @apply inline-block font-walsheimthin lg:font-lyon text-[13px] text-[#a5a5a5] lg:text-dark-grey leading-7 lg:leading-8 tracking-[2px] lg:tracking-wide uppercase hover:text-gold py-2 lg:py-0
+      @extend .hs-transition--default
+    &.current-menu-item
       a
-        @apply inline-block font-walsheimthin lg:font-lyon text-[13px] text-[#a5a5a5] lg:text-dark-grey leading-7 lg:leading-8 tracking-[2px] lg:tracking-wide uppercase hover:text-gold py-2 lg:py-0
-        @extend .hs-transition--default
-      &.current-menu-item
-        a
-          @apply text-gold
+        @apply text-gold
 
 #header-main
   .menu-wrapper
