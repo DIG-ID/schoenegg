@@ -10,7 +10,9 @@
 					<?php the_field( 'intro_tripadvisor' ); ?>
 				</div>
 				<div class="">
-					<?php the_field( 'intro_trustyou' ); ?>
+					<?php
+					$iframe = get_field( 'intro_trustyou' );
+					echo $iframe; ?>
 				</div>
 			</div>
 		</div>
