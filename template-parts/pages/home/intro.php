@@ -7,7 +7,8 @@
 			</div>
 			<div class="col-span-1 md:col-span-3 md:col-start-10">
 				<div class="mb-10">
-					<?php the_field( 'intro_tripadvisor' ); ?>
+					<?php $tripadvisor = get_field( 'intro_tripadvisor' );
+					echo $tripadvisor; ?>
 				</div>
 				<div class="">
 					<?php
