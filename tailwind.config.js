@@ -16,6 +16,7 @@ module.exports = {
       walsheimedium: ['WalsheimMedium', 'sans-serif'],
       lyon: ['LyonTextSemibold', 'serif'],
       handwriting: ['LucidaHandwriting', 'cursive'],
+      opensans: ['Open Sans', 'sans-serif'],
     },
 
     extend: {

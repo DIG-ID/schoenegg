@@ -121,6 +121,13 @@ if ( ! function_exists( 'hs_get_font_face_styles' ) ) :
 				font-weight: normal;
 				font-style: normal;
 			}
+
+			@font-face {
+				font-family: 'Open Sans';
+				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/Open-sans/OpenSans-Regular.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+			}
 		";
 
 	}
@@ -139,6 +146,7 @@ if ( ! function_exists( 'hs_preload_webfonts' ) ) :
 		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff" as="font" type="font/woff" crossorigin>
 		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/LyonText/LyonText-Semibold.woff" as="font" type="font/woff" crossorigin>
 		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/Lucida-Handwriting/LHANDW.TTF" as="font" type="font/ttf" crossorigin>
+		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>//assets/fonts/Open-sans/OpenSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 		<?php
 	}
 
