@@ -1,4 +1,4 @@
-<section class="section-wengen py-36">
+<section class="section-wengen py-16 lg:py-36">
 	<div class="hs-container">
 		<div class="hs-grid">
 			<?php

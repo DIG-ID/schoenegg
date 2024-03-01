@@ -1,4 +1,4 @@
-<section class="section-impressions pt-20 pb-28">
+<section class="section-impressions py-16 lg:py-36">
 	<div class="hs-container">
 		<div class="hs-grid">
             <div class="col-span-1 md:col-span-8 xl:col-span-10 col-start-1 md:col-start-2 xl:col-start-2 hs-grid">

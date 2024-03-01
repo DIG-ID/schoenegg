@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'hs-grid card card--events my-36' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'hs-grid card card--events my-16 lg:my-36' ); ?>>
 	<div class="col-span-1 md:col-span-6">
 		<?php
 		if ( has_post_thumbnail() ) :

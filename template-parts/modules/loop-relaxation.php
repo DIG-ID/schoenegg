@@ -1,4 +1,4 @@
-<section class="section-services-relaxation py-36">
+<section class="section-services-relaxation py-16 lg:py-36">
 	<div class="hs-container">
 		<div class="hs-grid">
 			<div class="col-span-1 md:col-span-12">
