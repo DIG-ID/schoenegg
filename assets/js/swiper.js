@@ -94,9 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 			var testimonailsSwiper = new Swiper(".testimonialsSwiper", {
 				loop: true,
+				effect: "fade",
+				speed: 800,
+				autoplay: {
+					delay: 3000,
+					disableOnInteraction: true,
+				},
 				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
+					nextEl: ".testimonial-button-next",
+					prevEl: ".testimonial-button-prev",
 				},
 			});
 		}
