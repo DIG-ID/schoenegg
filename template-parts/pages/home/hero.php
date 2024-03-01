@@ -1,8 +1,8 @@
-<section class="section-hero h-svh bg-slate-50 overflow-hidden">
+<section class="section-hero h-[87svh] lg:h-svh bg-slate-50 overflow-hidden">
 	<?php
 	if ( have_rows( 'hero_items' ) ) :
 		?>
-		<div class="swiper heroSwiper h-svh">
+		<div class="swiper heroSwiper h-[87svh] lg:h-svh">
 			<div class="swiper-wrapper">
 				<?php
 				while ( have_rows( 'hero_items' ) ) :
