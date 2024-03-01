@@ -19,8 +19,8 @@
 								?>
 								<div class="swiper-slide">
 									<blockquote id="post-<?php the_ID(); ?>" <?php post_class( 'card card--testimonial' ); ?>>
-										<h2 class="title__section text-center"><?php the_title(); ?></h2>
-										<p class="text__description text-center mb-6"><span class="font-handwriting text-2xl">"</span><?php the_field( 'text' ); ?><span class="font-handwriting text-2xl">"</span></p>
+										<h2 class="title__section !text-2xl text-center !mb-6"><?php the_title(); ?></h2>
+										<p class="text__description text-center mb-6">"<?php the_field( 'text' ); ?>"</p>
 										<footer class="text-center"><?php the_field( 'author' ); ?> - <cite><?php the_field( 'website' ); ?></cite></footer>
 									</blockquote>
 								</div>

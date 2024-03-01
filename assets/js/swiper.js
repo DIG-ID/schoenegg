@@ -95,9 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			var testimonailsSwiper = new Swiper(".testimonialsSwiper", {
 				loop: true,
 				effect: "fade",
+				fadeEffect: {
+					crossFade: true,
+				},
 				speed: 800,
 				autoplay: {
-					delay: 3000,
+					delay: 2000,
 					disableOnInteraction: true,
 				},
 				navigation: {
