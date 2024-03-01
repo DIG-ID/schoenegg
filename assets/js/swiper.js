@@ -24,28 +24,28 @@ document.addEventListener("DOMContentLoaded", () => {
 				},
 				on: {
 					init: function () {
-						gsap.set(content, { opacity: 0, y: 20 }); // Initial state
+						//gsap.set(content, { opacity: 0, y: 20 }); // Initial state
 						isTransitioning = true;
-						gsap.to(content, { opacity: 1, y: 0, duration: 0.3, stagger: 0.2 }); // Fade in on init
+						gsap.fromTo(content, { opacity: 0, y: 20 }, { y: 0, duration: 0.6, stagger: 0.10, autoAlpha: 1 }); // Fade in on init
 						setTimeout(function() {
 							isTransitioning = false;
-						}, 3000);
+						}, 3000); 
 						setTimeout(function () {
-							gsap.to(content, { opacity: 0, y: -20, duration: 0.5 }); // Fade out
-						}, 6000);
+							gsap.to(content, { opacity: 0, duration: 0.6 }); // Fade out
+						}, 7000);
 					},
 					slideChangeTransitionStart: function() {
 						//gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
 					},
 					slideChangeTransitionEnd: function() {
 						isTransitioning = true;
-						gsap.to(content, { opacity: 1, y: 0, duration: 0.3, stagger: 0.2 }); // Fade in after transition
+						gsap.fromTo(content, { opacity: 0, y: 20 }, { y: 0, duration: 0.6, stagger: 0.10, autoAlpha: 1 }); // Fade in after transition
 						setTimeout(function() {
 							isTransitioning = false;
 						}, 3000);
 						setTimeout(function () {
-							gsap.to(content, { opacity: 0, y: -20, duration: 0.5 }); // Fade out
-						}, 6000);
+							gsap.to(content, { opacity: 0, duration: 0.6 }); // Fade out
+						}, 7000);
 					}
 				}
 			});
@@ -53,25 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
 			document.querySelector(".swiper-button-next").addEventListener("click", function() {
 				if (!isTransitioning) {
 					isTransitioning = true;
-					gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
+					gsap.to(content, { opacity: 0, duration: 0.6 }); // Fade out before transition
 					heroSwiper.autoplay.stop();
 					setTimeout(function() {
 						heroSwiper.slideNext();
 						isTransitioning = false;
 						heroSwiper.autoplay.start();
-					}, 1500);
+					}, 800);
 				}
 			});
 			document.querySelector(".swiper-button-prev").addEventListener("click", function() {
 				if (!isTransitioning) {
 					isTransitioning = true;
-					gsap.to(content, { opacity: 0, y: -20, duration: 0.3 }); // Fade out before transition
+					gsap.to(content, { opacity: 0, duration: 0.6 }); // Fade out before transition
 					heroSwiper.autoplay.stop(); 
 					setTimeout(function() {
 						heroSwiper.slidePrev();
 						isTransitioning = false;
 						heroSwiper.autoplay.start(); 
-					}, 1500); 
+					}, 800); 
 				}
 			});
 

@@ -39,18 +39,18 @@ $(function() {
    *               Home Page               *
    *                                       *
    ****************************************/
-  if ( $(".page-template-page-home")[0] ) {
+  /*if ( $(".page-template-page-home")[0] ) {
     // Images parallax
-    /*const tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.section-teasers',
+        trigger: '.section-hero',
         scrub: true,
         pin: false,
         helpers: true,
       }
     });
 
-    tl.fromTo('.parallax-bg', { yPercent: -10}, { yPercent: -40, ease: 'none' });*/
-  };
+    tl.fromTo('.section-hero', { height: 0 }, { height: '70svh', ease: 'none' });
+  };*/
 
 });
