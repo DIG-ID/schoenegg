@@ -1,7 +1,7 @@
 <section class="section-rooms-filters pt-8">
 	<div class="hs-container xl:!px-8 2xl:!px-0">
 		<div class="hs-grid">
-			<div class="col-span-8">
+			<div class="col-span-12">
 				<?php
 				$type_terms = get_terms(
 					array(
