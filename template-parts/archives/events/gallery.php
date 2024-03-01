@@ -1,5 +1,5 @@
-<section class="section-events-gallery-hero h-[75svh] bg-slate-50 mb-12 overflow-hidden">
-	<div class="swiper galleryHeroSwiper h-full">
+<section class="section-events-gallery-hero lg:h-[75svh] bg-slate-50 mb-12 overflow-hidden">
+	<div class="swiper galleryHeroSwiper h-full hidden lg:block">
 		<div class="swiper-wrapper h-full">
 			<?php
 			$gallery = get_field( 'archives_events_gallery', 'options' );
