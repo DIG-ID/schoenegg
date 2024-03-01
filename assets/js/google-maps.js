@@ -81,7 +81,7 @@ function initMarker($marker, map) {
         position: latlng,
         map: map,
         icon: {
-            url: '../wp-content/themes/schoenegg/assets/images/map-marker-schonegg.svg',
+            url: getMarkerImageUrl(),
             scaledSize: new google.maps.Size(46, 63) // Set the size here
         },
         title: $marker.attr('data-title')
@@ -89,7 +89,12 @@ function initMarker($marker, map) {
 
     map.markers.push(marker);
 }
-  
+function getMarkerImageUrl() {
+  // Construct the path to the marker image
+  var markerImageUrl = '/wp-content/themes/schoenegg/assets/images/map-marker-schonegg.svg';
+
+  return markerImageUrl;
+}
     // Center map based on markers.
     centerMap( map );
   
