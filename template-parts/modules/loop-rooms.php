@@ -30,7 +30,7 @@
 			$rooms_query_args = array(
 				'post_type'   => 'zimmer',
 				'post_status' => 'publish',
-				'order'       => 'ASC',
+				'order'       => 'DESC',
 				'orderbr'     => 'date',
 			);
 			$rooms_query = new WP_Query( $rooms_query_args );
