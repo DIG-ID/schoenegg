@@ -24,7 +24,7 @@
 	</div>
 </section>
 <section class="section-rooms pb-16">
-	<div class="hs-container xl:!px-8 2xl:!px-0">
+	<div class="hs-container">
 		<div class="grid-rooms -mx-4">
 			<?php
 			$rooms_query_args = array(
