@@ -14,7 +14,7 @@
 							'posts_per_page' => -1,
 							'post_status'    => 'publish',
 							'orderby'        => 'date',
-							'order'          => 'ASC',
+							'order'          => 'DESC',
 						);
 						$rooms_query = new WP_Query( $rooms_args );
 						if ( $rooms_query->have_posts() ) :
@@ -47,4 +47,6 @@
 		</div>
 	</div>
 </section>
-<hr class="hs-container hs-divider">
+<div class="hs-container">
+	<hr class="hs-container hs-divider">
+</div>

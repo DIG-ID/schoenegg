@@ -43,4 +43,7 @@
 		</div>
 	</div>
 </section>
-<hr class="hs-container hs-divider">
+<div class="hs-container">
+	<hr class="hs-container hs-divider">
+</div>
+

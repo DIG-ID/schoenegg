@@ -15,9 +15,9 @@
 							echo wp_get_attachment_image( $himage, 'full', false, array( 'class' => 'w-full h-full object-cover' ) );
 						endif;
 						?>
-						<div class="slider-content absolute left-16 bottom-16 w-2/5">
+						<div class="slider-content absolute left-16 bottom-16 right-16 md:w-2/5 md:right-auto">
 							<p class="hero-swiper-subtitle text-white text-sm font-walsheimedium uppercase mb-1 opacity-0"><?php the_sub_field( 'subtitle' ); ?></p>
-							<h2 class="hero-swiper-title text-white text-[44px] leading-[54px] font-lyon tracking-[0.75px] mb-2 opacity-0"><?php the_sub_field( 'title' ); ?></h2>
+							<h2 class="hero-swiper-title text-white text-3xl md:text-[44px] md:leading-[54px] font-lyon tracking-[0.75px] mb-2 opacity-0"><?php the_sub_field( 'title' ); ?></h2>
 							<?php
 							$hlink = get_sub_field( 'link' );
 							if ( $hlink ) :

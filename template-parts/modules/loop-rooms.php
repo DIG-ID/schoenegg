@@ -27,14 +27,25 @@
 	<div class="hs-container xl:!px-8 2xl:!px-0">
 		<div class="grid-rooms -mx-4">
 			<?php
-			if ( have_posts() ) :
-				while ( have_posts() ) :
-					the_post();
+			$rooms_query_args = array(
+				'post_type'   => 'zimmer',
+				'post_status' => 'publish',
+				'order'       => 'ASC',
+				'orderbr'     => 'date',
+			);
+			$rooms_query = new WP_Query( $rooms_query_args );
+			if ( $rooms_query->have_posts() ) :
+				while ( $rooms_query->have_posts() ) :
+					$rooms_query->the_post();
 					get_template_part( 'template-parts/components/card-rooms' );
 				endwhile;
 			endif;
+			wp_reset_postdata();
 			?>
 		</div>
 	</div>
 </section>
-<hr class="hs-container hs-divider">
+<div class="hs-container">
+	<hr class="hs-container hs-divider">
+</div>
+
