@@ -1,5 +1,5 @@
 <section class="section-rooms-filters pt-8">
-	<div class="hs-container xl:!px-8">
+	<div class="hs-container">
 		<div class="hs-grid">
 			<div class="col-span-12">
 				<?php
@@ -24,7 +24,7 @@
 	</div>
 </section>
 <section class="section-rooms pb-16">
-	<div class="hs-container xl:!px-8">
+	<div class="hs-container">
 		<div class="grid-rooms -mx-4">
 			<?php
 			$rooms_query_args = array(

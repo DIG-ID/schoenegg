@@ -1,5 +1,5 @@
 <section class="section-zimmer-content py-16 lg:py-0 mb-16">
-	<div class="hs-container xl:!px-8 2xl:!px-0">
+	<div class="hs-container">
 		<div class="hs-grid">
 			<div class="col-span-1 md:col-span-8">
 				<h1 class="title__page"><?php the_title(); ?></h1>

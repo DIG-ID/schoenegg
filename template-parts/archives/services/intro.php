@@ -1,5 +1,5 @@
 <section class="section-services-intro py-16 lg:pt-28 lg:pb-16">
-	<div class="hs-container ">
+	<div class="hs-container">
 		<div class="hs-grid">
 			<div class="col-span-1 md:col-span-8">
 				<h1 class="title__page"><?php the_field( 'archives_services_title', 'options' ); ?></h1>
