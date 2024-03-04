@@ -8,6 +8,6 @@
 		</div>
 	</div>
 </section>
-<div class="hs-container">
+<div class="hs-container xl:!px-8 2xl:!px-0">
 	<hr class="hs-container hs-divider">
 </div>

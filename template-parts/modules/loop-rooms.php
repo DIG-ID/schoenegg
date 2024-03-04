@@ -24,13 +24,13 @@
 	</div>
 </section>
 <section class="section-rooms pb-16">
-	<div class="hs-container">
+	<div class="hs-container xl:!px-8 2xl:!px-0">
 		<div class="grid-rooms -mx-4">
 			<?php
 			$rooms_query_args = array(
 				'post_type'   => 'zimmer',
 				'post_status' => 'publish',
-				'order'       => 'DESC',
+				'order'       => 'ASC',
 				'orderbr'     => 'date',
 			);
 			$rooms_query = new WP_Query( $rooms_query_args );
