@@ -14,7 +14,7 @@
 							'posts_per_page' => -1,
 							'post_status'    => 'publish',
 							'orderby'        => 'date',
-							'order'          => 'DESC',
+							'order'          => 'ASC',
 						);
 						$rooms_query = new WP_Query( $rooms_args );
 						if ( $rooms_query->have_posts() ) :
