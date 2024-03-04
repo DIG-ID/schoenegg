@@ -2,7 +2,7 @@
 	<a href="<?php the_permalink(); ?>">
 		<?php
 		if ( has_post_thumbnail() ) :
-			the_post_thumbnail( 'full', array( 'class' => 'max-w-full object-cover mb-8' ) );
+			the_post_thumbnail( 'full', array( 'class' => 'max-w-full w-full object-cover mb-8' ) );
 		endif;
 		?>
 		<h2 class="title__card mb-4"><?php the_title(); ?></h2>
