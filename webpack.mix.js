@@ -14,7 +14,7 @@ mix
   //.js('assets/js/blog-ajax.js', 'js')
   //.js('assets/js/googleMaps.js', 'js')
   .sass('assets/sass/main.sass', 'css')
-  //.sass('assets/sass/admin-login.sass', 'css')
+  .sass('assets/sass/admin-login.sass', 'css')
   .options({
     postCss: [ tailwindcss('./tailwind.config.js') ],
   })
