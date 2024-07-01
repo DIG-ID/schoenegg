@@ -10,7 +10,7 @@
 					$whatsapp_number = get_field( 'footer_whatsapp', 'options' );
 					$wm = preg_replace( '/\s+/', '', $whatsapp_number );
 					?>
-					<p><?php esc_html_e( 'Whatsapp: ', 'hs' ) ?><a class="no-underline" href="https://wa.me/<?php echo $wm; ?>"><?php the_field( 'footer_whatsapp', 'options' ); ?></a> <br><?php esc_html_e( '(07:00 – 17:00 Uhr)', 'hs' ); ?></p>
+					<p><?php esc_html_e( 'Whatsapp: ', 'hs' ) ?><a class="no-underline" href="https://wa.me/<?php echo $wm; ?>" target="_blank"><?php the_field( 'footer_whatsapp', 'options' ); ?></a> <br><?php esc_html_e( '(07:00 – 17:00 Uhr)', 'hs' ); ?></p>
 					<a class="no-underline" href="mailto:<?php the_field( 'footer_e-mail', 'options' ); ?>"><?php the_field( 'footer_e-mail', 'options' ); ?></a>
 				</div>
 			</div>
