@@ -6,6 +6,7 @@
 					<p class="text-white !mb-5"><?php esc_html_e( 'Kontakt', 'hs' ) ?></p>
 					<p><?php the_field( 'footer_address', 'options' ); ?></p>
 					<p><?php esc_html_e( 'Tel: ', 'hs' ) ?><a class="no-underline" href="tel:<?php the_field( 'footer_phone', 'options' ); ?>"><?php the_field( 'footer_phone', 'options' ); ?></a></p>
+					<p><?php esc_html_e( 'Whatsapp: ', 'hs' ) ?><a class="no-underline" href="https://wa.me/<?php the_field( 'footer_whatsapp', 'options' ); ?>"><?php the_field( 'footer_whatsapp', 'options' ); ?></a> <br><?php esc_html_e( '(07:00 – 17:00 Uhr)', 'hs' ); ?></p>
 					<a class="no-underline" href="mailto:<?php the_field( 'footer_e-mail', 'options' ); ?>"><?php the_field( 'footer_e-mail', 'options' ); ?></a>
 				</div>
 			</div>
