@@ -12,7 +12,7 @@
 					<div class="swiper-slide relative">
 						<?php
 						if ( $himage ) :
-							echo wp_get_attachment_image( $himage, 'full', false, array( 'class' => 'w-full h-full object-cover' ) );
+							echo wp_get_attachment_image( $himage, 'full', false, array( 'class' => 'w-full h-full object-cover object-[-225px]' ) );
 						endif;
 						?>
 						<div class="slider-content absolute left-16 bottom-16 right-16 md:w-2/5 md:right-auto">
