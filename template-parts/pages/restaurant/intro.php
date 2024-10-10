@@ -5,7 +5,7 @@
 				<h1 class="title__section"><?php the_title(); ?></h1>
 				<div class="text__area mb-8"><?php the_field( 'intro_text' ); ?></div>
                 <div class="text__area mb-8"><?php the_field( 'intro_opening_hours' ); ?></div>
-                <div class="flex flex-wrap max-w-[650px]">
+                <div class="hidden flex-wrap max-w-[650px]">
                     <?php if (have_rows('intro_menus')) :
                         $count = 0; // Counter to keep track of the number of buttons
                         while (have_rows('intro_menus')) : the_row(); ?>
