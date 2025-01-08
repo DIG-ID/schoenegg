@@ -29,7 +29,7 @@
                     endif; ?>
                 </div>
 			</div>
-			<div class="col-span-1 md:col-span-3 md:col-start-10 flex flex-col justify-between items-center">
+			<div class="col-span-1 md:col-span-3 md:col-start-10 flex sm:block md:flex flex-col justify-between items-center">
 				<div class="mb-10 mr-1">
                 <?php 
                 $restaurantLogo = get_field('intro_logo');
