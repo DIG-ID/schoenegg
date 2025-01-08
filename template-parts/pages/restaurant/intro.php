@@ -29,8 +29,8 @@
                     endif; ?>
                 </div>
 			</div>
-			<div class="col-span-1 md:col-span-3 md:col-start-10">
-				<div class="mb-10">
+			<div class="col-span-1 md:col-span-3 md:col-start-10 flex flex-col justify-between items-center">
+				<div class="mb-10 mr-1">
                 <?php 
                 $restaurantLogo = get_field('intro_logo');
                 $size = 'full';
@@ -39,6 +39,14 @@
                     echo wp_get_attachment_image( $restaurantLogo, $size, false, array('class' => $classes) );
                 } ?>
 				</div>
+                <div>
+                <?php
+                $table_reservation_script = get_field('intro_table_reservation_script');
+                if ($table_reservation_script) {
+                    echo $table_reservation_script;
+                }
+                ?>
+                </div>
 			</div>
 		</div>
 	</div>
