@@ -12,7 +12,9 @@
 				$wm = preg_replace( '/\s+/', '', $whatsapp_number );
 				?>
 				<div class="text__area"><p><?php esc_html_e( 'Whatsapp: ', 'hs' ) ?><a class="!no-underline !text-[#737373]" href="https://wa.me/<?php echo $wm; ?>" target="_blank"><?php the_field( 'contacts_whatsapp' ); ?></a><br><?php esc_html_e( '(07:00 – 17:00 Uhr)', 'hs' ); ?></p></div>
-				<div class="text__area"><p><?php esc_html_e( 'Fax: ', 'hs' ) ?><?php the_field( 'contacts_fax' ); ?></p></div>
+				<?php if ( get_field( 'contacts_fax' ) ) : ?>
+					<div class="text__area"><p><?php esc_html_e( 'Fax: ', 'hs' ) ?><?php the_field( 'contacts_fax' ); ?></p></div>
+				<?php endif; ?>
 				<div class="text__area mb-8"><p><a class="!no-underline !text-[#737373]" href="mailto:<?php the_field( 'contacts_e-mail' ); ?>"><?php the_field( 'contacts_e-mail' ); ?></a></p></div>
 				<div class="text__area"><p><b><?php esc_html_e( 'Ihr Gastgeber', 'hs' ) ?></b><br><?php the_field( 'contacts_host_name' ); ?></p></div>
 			</div>
