@@ -41,18 +41,6 @@
 				);
 				?>
 			</div>
-			<div class="menu-extras--sister-property">
-				<figure class="w-full flex flex-col justify-center">
-					<figcaption class="font-walsheimthin text-xs leading-5 tracking-wider text-left"><?php the_field( 'navigation_sister_property_text', 'options' ); ?></figcaption>
-					<?php
-					$sp_img = get_field( 'navigation_sister_property_image', 'options' );
-					$sp_url = get_field( 'navigation_sister_property_url', 'options' );
-					if ( $sp_img ) :
-						echo '<a href="' . esc_url( $sp_url ) . '" target="_blank" >' . wp_get_attachment_image( $sp_img, 'full', false, array( 'class' => 'max-w-full mx-auto object-cover' ) ) . '</a>';
-					endif;
-					?>
-				</figure>
-			</div>
 		</div>
 		<button class="mobile-menu-toggle">
 			<span class="bars">
