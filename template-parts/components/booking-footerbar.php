@@ -1,6 +1,6 @@
 <div id="footerbar" class="block lg:hidden fixed bottom-0 left-0 w-full border-t border-gold bg-white h-[40px] z-50">
     <div id="buchenfixed" class="absolute w-[65%] py-[7px] px-0 text-center text-gold">
-        <a onclick="wbeOpenOverlay()" target="_blank">
+        <a href="https://booking.hotel-schoenegg.ch/hotel-schonegg-wengen" target="_blank">
             <p class="text-[18px] leading-[27px] tracking-[0.05em] font-bold"><?php the_field( 'navigation_booking_banner_label', 'options' ); ?></p>
         </a>
     </div>
