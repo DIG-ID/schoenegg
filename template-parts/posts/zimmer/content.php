@@ -10,9 +10,9 @@
 						<?php esc_html_e( 'Zimmer Buchen', 'hs' ); ?>
 					</a>
 				<?php else : ?>
-					<button onclick="wbeOpenOverlay()" class="btn__primary">
+					<a href="https://booking.hotel-schoenegg.ch/hotel-schonegg-wengen" target="_blank" class="btn__primary">
 						<?php esc_html_e( 'Zimmer Buchen', 'hs' ); ?>
-					</button>
+					</a>
 				<?php endif; ?>
 					<a class="btn__secondary" href="<?php echo esc_url( get_post_type_archive_link( 'zimmer' ) ); ?>"><?php esc_html_e( 'Übersicht', 'hs' ); ?></a>
 				</div>
