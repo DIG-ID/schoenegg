@@ -32,7 +32,7 @@
 											?>
 											<h3 class="title__card"><?php the_title(); ?></h3>
 										</a>
-									</aritcle>
+									</article>
 								</div>
 								<?php
 							endwhile;

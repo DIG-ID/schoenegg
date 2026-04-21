@@ -22,19 +22,6 @@ function hs_theme_setup() {
 
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 
-	// Update thumbnail size.
-	update_option( 'thumbnail_size_w', 737 );
-	update_option( 'thumbnail_size_h', 200 );
-	update_option( 'thumbnail_crop', true );
-
-	// Update medium size.
-	update_option( 'medium_size_w', 956 );
-	update_option( 'medium_size_h', 500 );
-
-	// Update large size.
-	update_option( 'large_size_w', 1920 );
-	update_option( 'large_size_h', 800 );
-
 	add_image_size( 'image-square', 1024, 1024, array( 'center', 'center' ) );
 
 	//set_post_thumbnail_size( 500, 350, 'center', 'center' );
@@ -46,6 +33,21 @@ function hs_theme_setup() {
 }
 
 add_action( 'after_setup_theme', 'hs_theme_setup' );
+
+/**
+ * Runs once on theme activation to set image size options in the database.
+ */
+function hs_theme_setup_image_sizes() {
+	update_option( 'thumbnail_size_w', 737 );
+	update_option( 'thumbnail_size_h', 200 );
+	update_option( 'thumbnail_crop', true );
+	update_option( 'medium_size_w', 956 );
+	update_option( 'medium_size_h', 500 );
+	update_option( 'large_size_w', 1920 );
+	update_option( 'large_size_h', 800 );
+}
+
+add_action( 'after_switch_theme', 'hs_theme_setup_image_sizes' );
 
 /**
  * Register our sidebars and widgetized areas.
@@ -86,47 +88,61 @@ if ( ! function_exists( 'hs_get_font_face_styles' ) ) :
 	 */
 	function hs_get_font_face_styles() {
 
+		$uri = esc_url( get_template_directory_uri() );
+
 		return "
 			@font-face {
 				font-family: 'WalsheimThin';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/GT-Walsheim/GT-Walsheim-Thin.woff') format('woff');
+				src: url('{$uri}/assets/fonts/GT-Walsheim/GT-Walsheim-Thin.woff2') format('woff2'),
+				     url('{$uri}/assets/fonts/GT-Walsheim/GT-Walsheim-Thin.woff') format('woff');
 				font-style: normal;
 				font-weight: 100;
+				font-display: swap;
 			}
 
 			@font-face {
 				font-family: 'WalsheimLight';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/GT-Walsheim/GT-Walsheim-Light.woff') format('woff');
+				src: url('{$uri}/assets/fonts/GT-Walsheim/GT-Walsheim-Light.woff2') format('woff2'),
+				     url('{$uri}/assets/fonts/GT-Walsheim/GT-Walsheim-Light.woff') format('woff');
 				font-style: normal;
 				font-weight: 300;
+				font-display: swap;
 			}
 
 			@font-face {
 				font-family: 'WalsheimMedium';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff') format('woff');
+				src: url('{$uri}/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff2') format('woff2'),
+				     url('{$uri}/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff') format('woff');
 				font-style: normal;
 				font-weight: 500;
+				font-display: swap;
 			}
 
 			@font-face {
 				font-family: 'LyonTextSemibold';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/LyonText/LyonText-Semibold.woff') format('woff');
+				src: url('{$uri}/assets/fonts/LyonText/LyonText-Semibold.woff2') format('woff2'),
+				     url('{$uri}/assets/fonts/LyonText/LyonText-Semibold.woff') format('woff');
 				font-weight: 600;
 				font-style: normal;
+				font-display: swap;
 			}
 
 			@font-face {
 				font-family: 'LucidaHandwriting';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/Lucida-Handwriting/LHANDW.TTF') format('truetype');
+				src: url('{$uri}/assets/fonts/Lucida-Handwriting/LHANDW.woff2') format('woff2'),
+				     url('{$uri}/assets/fonts/Lucida-Handwriting/LHANDW.TTF') format('truetype');
 				font-weight: normal;
 				font-style: normal;
+				font-display: swap;
 			}
 
 			@font-face {
 				font-family: 'Open Sans';
-				src: url('" . esc_url( get_template_directory_uri() ) . "/assets/fonts/Open-sans/OpenSans-Regular.ttf') format('truetype');
+				src: url('{$uri}/assets/fonts/Open-sans/OpenSans-Regular.woff2') format('woff2'),
+				     url('{$uri}/assets/fonts/Open-sans/OpenSans-Regular.ttf') format('truetype');
 				font-weight: normal;
 				font-style: normal;
+				font-display: swap;
 			}
 		";
 
@@ -141,12 +157,8 @@ if ( ! function_exists( 'hs_preload_webfonts' ) ) :
 	 */
 	function hs__preload_webfonts() {
 		?>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Thin.woff" as="font" type="font/woff" crossorigin>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Light.woff" as="font" type="font/woff" crossorigin>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Medium.woff" as="font" type="font/woff" crossorigin>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/LyonText/LyonText-Semibold.woff" as="font" type="font/woff" crossorigin>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/Lucida-Handwriting/LHANDW.TTF" as="font" type="font/ttf" crossorigin>
-		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>//assets/fonts/Open-sans/OpenSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/GT-Walsheim/GT-Walsheim-Thin.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fonts/LyonText/LyonText-Semibold.woff2" as="font" type="font/woff2" crossorigin>
 		<?php
 	}
 
@@ -174,7 +186,7 @@ function hs_theme_enqueue_styles() {
 	wp_enqueue_style( 'theme-styles' );
 
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, false );
+	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
 
 	if ( is_page_template( 'page-templates/page-contact.php' ) || is_admin() ) :
 		wp_enqueue_script( 'google-map-settings', get_stylesheet_directory_uri() . '/assets/js/google-maps.js', array( 'jquery' ), $theme_version, true );
@@ -209,18 +221,29 @@ $icon_mapping = array(
 	'50d' => esc_url( get_template_directory_uri() . '/assets/weather/fog.svg' ),
 );
 function get_weather_data( $location, $api_key ) {
-	$url = "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$api_key&units=metric";
+	$cache_key = 'weather_' . md5( $location );
+	$cached    = get_transient( $cache_key );
+
+	if ( false !== $cached ) {
+		return $cached;
+	}
+
+	$url      = 'https://api.openweathermap.org/data/2.5/weather?q=' . rawurlencode( $location ) . '&appid=' . $api_key . '&units=metric';
 	$response = wp_remote_get( $url );
+
 	if ( is_wp_error( $response ) ) {
 		return false;
 	}
-	$body = wp_remote_retrieve_body( $response );
-	return json_decode( $body, true );
+
+	$data = json_decode( wp_remote_retrieve_body( $response ), true );
+	set_transient( $cache_key, $data, 30 * MINUTE_IN_SECONDS );
+
+	return $data;
 }
 
 //Booking System
 function hopa_wbe() {
-	wp_enqueue_script( 'script-name', 'https://res-online.ch/wbePlus/incubator.js.php?hotelID=3074&username=WBEPlus&password=Jru4WrSx', array(), '1.0.0', true );
+	wp_enqueue_script( 'hopa-wbe', 'https://res-online.ch/wbePlus/incubator.js.php?hotelID=3074&username=WBEPlus&password=Jru4WrSx', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'hopa_wbe' );
 

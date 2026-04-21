@@ -5,16 +5,18 @@
 				<div class="footer-text__area">
 					<p class="text-white !mb-5"><?php esc_html_e( 'Kontakt', 'hs' ) ?></p>
 					<p><?php the_field( 'footer_address', 'options' ); ?></p>
-					<p><?php esc_html_e( 'Tel: ', 'hs' ) ?><a class="no-underline" href="tel:<?php the_field( 'footer_phone', 'options' ); ?>"><?php the_field( 'footer_phone', 'options' ); ?></a></p>
-						<?php
-						$whatsapp_number = get_field( 'footer_whatsapp', 'options' );
+					<?php $phone = get_field( 'footer_phone', 'options' ); ?>
+					<p><?php esc_html_e( 'Tel: ', 'hs' ) ?><a class="no-underline" href="tel:<?php echo esc_attr( $phone ); ?>"><?php echo $phone; ?></a></p>
+					<?php
+					$whatsapp_number = get_field( 'footer_whatsapp', 'options' );
+					if ( $whatsapp_number ) :
 						$wm = preg_replace( '/\s+/', '', $whatsapp_number );
-						?>
-						<?php if( $whatsapp_number ) : ?>
-							<p><?php esc_html_e( 'Whatsapp: ', 'hs' ) ?><a class="no-underline" href="https://wa.me/<?php echo $wm; ?>" target="_blank"><?php the_field( 'footer_whatsapp', 'options' ); ?></a> <br></p>
-						<?php endif; ?>
-						<p><?php esc_html_e( '(07:00 – 17:00 Uhr)', 'hs' ); ?></p>
-					<a class="no-underline" href="mailto:<?php the_field( 'footer_e-mail', 'options' ); ?>"><?php the_field( 'footer_e-mail', 'options' ); ?></a>
+					?>
+						<p><?php esc_html_e( 'Whatsapp: ', 'hs' ) ?><a class="no-underline" href="https://wa.me/<?php echo esc_attr( $wm ); ?>" target="_blank" rel="noopener noreferrer"><?php echo $whatsapp_number; ?></a> <br></p>
+					<?php endif; ?>
+					<p><?php esc_html_e( '(07:00 – 17:00 Uhr)', 'hs' ); ?></p>
+					<?php $email = get_field( 'footer_e-mail', 'options' ); ?>
+					<a class="no-underline" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo $email; ?></a>
 				</div>
 			</div>
 			<div class="col-span-1 md:col-span-6 lg:col-span-3">
@@ -38,10 +40,10 @@
 					<p class="!text-white !mb-5"><?php esc_html_e( 'Partner', 'hs' ) ?></p>
 					<ul>
 						<?php
-						if( have_rows( 'footer_partner_logos', 'options' ) ):
-							while( have_rows( 'footer_partner_logos', 'options' ) ) : the_row(); ?>
+						if ( have_rows( 'footer_partner_logos', 'options' ) ) :
+							while ( have_rows( 'footer_partner_logos', 'options' ) ) : the_row(); ?>
 							<li>
-								<a class="no-underline" href="<?php the_sub_field( 'link' ); ?>" target="_blank"><?php the_sub_field( 'title' ); ?></a>
+								<a class="no-underline" href="<?php echo esc_url( get_sub_field( 'link' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php the_sub_field( 'title' ); ?></a>
 							</li>
 							<?php endwhile;
 						endif; ?>
@@ -50,21 +52,20 @@
 			</div>
 			<div class="col-span-1 md:col-span-6 lg:col-span-3 grid grid-cols-1 md:grid-cols-2">
 				<div class="col-span-1 md:col-span-2 flex items-center justify-start lg:justify-end mt-9 md:mt-0">
-					<img class="mr-0 lg:mr-6" src="/wp-content/uploads/PRIX-BIENVENU-2018_Top100_DE.png" alt="award logo" title="award logo">
+					<img class="mr-0 lg:mr-6" src="/wp-content/uploads/PRIX-BIENVENU-2018_Top100_DE.png" alt="Prix Bienvenu 2018 Top 100" loading="lazy">
 				</div>
 				<div class="col-span-1 md:col-span-2 flex justify-start lg:justify-end items-baseline">
 					<?php
-					if( have_rows( 'footer_partner_logos', 'options' ) ):
-						while( have_rows( 'footer_partner_logos', 'options' ) ) : the_row(); ?>
-							<a href="<?php the_sub_field( 'link' ); ?>" target="_blank">
-								<?php
-								$image = get_sub_field( 'image' );
-								if ( $image ) :
-									echo wp_get_attachment_image( $image, 'full', false, array( 'class' => 'w-full object-cover my-6' ) );
-								endif;
-								?>
-							</a>
-						<?php endwhile;
+					if ( have_rows( 'footer_partner_logos', 'options' ) ) :
+						while ( have_rows( 'footer_partner_logos', 'options' ) ) : the_row();
+							$link  = get_sub_field( 'link' );
+							$image = get_sub_field( 'image' );
+							if ( $image ) : ?>
+								<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer">
+									<?php echo wp_get_attachment_image( $image, 'full', false, array( 'class' => 'w-full object-cover my-6' ) ); ?>
+								</a>
+							<?php endif;
+						endwhile;
 					endif; ?>
 				</div>
 			</div>

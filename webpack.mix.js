@@ -2,6 +2,7 @@
 
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
+const postcssNesting = require('postcss-nesting');
 
 mix
   .setResourceRoot('./')
@@ -16,7 +17,7 @@ mix
   .sass('assets/sass/main.sass', 'css')
   .sass('assets/sass/admin-login.sass', 'css')
   .options({
-    postCss: [ tailwindcss('./tailwind.config.js') ],
+    postCss: [ postcssNesting, tailwindcss('./tailwind.config.js') ],
   })
 
   .browserSync({
@@ -40,3 +41,12 @@ if (!mix.inProduction()) {
 if (mix.inProduction()) {
   mix.version();
 }
+
+mix.webpackConfig({
+  ignoreWarnings: [
+    {
+      module: /swiper/,
+      message: /Nested CSS was detected/,
+    },
+  ],
+});

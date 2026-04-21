@@ -38,15 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const $toggleBtn = $('.mobile-menu-toggle')
     $toggleBtn.on('click', (e) => {
       $('#header-main').toggleClass('mobile-menu-open');
-      
-      // Check if the mobile menu is open
-      if ($('#header-main').hasClass('mobile-menu-open')) {
-        // If the mobile menu is open, prevent scrolling
-        $('body').css('overflow', 'hidden');
-      } else {
-        // If the mobile menu is closed, allow scrolling
-        $('body').css('overflow', 'auto');
-      }
+
+      const isOpen = $('#header-main').hasClass('mobile-menu-open');
+      $toggleBtn.attr('aria-expanded', isOpen);
+      $('body').css('overflow', isOpen ? 'hidden' : 'auto');
 
       $('.menu-wrapper').slideToggle(300);
     });

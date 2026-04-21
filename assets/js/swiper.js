@@ -1,4 +1,9 @@
-import Swiper from 'swiper/bundle';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import { gsap } from "gsap";
 // wait until DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			let isTransitioning = false;
 		
 			var heroSwiper = new Swiper(".heroSwiper", {
+				modules: [Pagination, Autoplay],
 				slidesPerView: 1,
 				loop: true,
 				speed: 800,
@@ -76,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			var roomsSwiper = new Swiper(".roomsSwiper", {
+				modules: [Navigation],
 				loop: true,
 				spaceBetween: 0,
 				slidesPerView: 1,
@@ -93,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			});
 			var testimonailsSwiper = new Swiper(".testimonialsSwiper", {
+				modules: [Navigation, Autoplay, EffectFade],
 				loop: true,
 				effect: "fade",
 				fadeEffect: {
@@ -110,8 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}
 
-		if ($('.galleryHeroSwiper').length) {
+		if (document.querySelector('.galleryHeroSwiper')) {
 			var galleryHeroSwiper = new Swiper(".galleryHeroSwiper", {
+				modules: [Navigation],
 				loop: true,
 				spaceBetween: 0,
 				slidesPerView: 1,
@@ -122,8 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}
 
-		if ($('.galleryHeroSwiperLow').length) {
+		if (document.querySelector('.galleryHeroSwiperLow')) {
 			var galleryHeroSwiperLow = new Swiper(".galleryHeroSwiperLow", {
+				modules: [Navigation],
 				loop: true,
 				spaceBetween: 0,
 				slidesPerView: 1,
