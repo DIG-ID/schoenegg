@@ -248,6 +248,46 @@ function hopa_wbe() {
 //add_action( 'wp_enqueue_scripts', 'hopa_wbe' );
 
 /**
+ * Clean up unnecessary tags from <head>.
+ */
+function hs_head_cleanup() {
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wp_generator' );
+	remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+	remove_action( 'wp_head', 'rest_output_link_wp_head' );
+}
+add_action( 'init', 'hs_head_cleanup' );
+
+/**
+ * Dequeue scripts and styles not needed by this theme.
+ */
+function hs_dequeue_unnecessary_assets() {
+	// Emoji — this theme doesn't use WordPress emoji
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+	// WordPress embed script
+	wp_dequeue_script( 'wp-embed' );
+
+	// Gutenberg block styles — not using blocks on the frontend
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'classic-theme-styles' );
+	wp_dequeue_style( 'global-styles' );
+
+	// Contact Form 7 — only needed on the contact and voucher pages
+	$cf7_templates = array( 'page-templates/page-contact.php', 'page-templates/page-voucher.php' );
+	if ( ! is_page_template( $cf7_templates ) ) {
+		wp_dequeue_style( 'contact-form-7' );
+		wp_dequeue_script( 'contact-form-7' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'hs_dequeue_unnecessary_assets', 100 );
+
+/**
  * Remove <p> Tag From Contact Form 7.
  */
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
