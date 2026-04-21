@@ -245,7 +245,7 @@ function get_weather_data( $location, $api_key ) {
 function hopa_wbe() {
 	wp_enqueue_script( 'hopa-wbe', 'https://res-online.ch/wbePlus/incubator.js.php?hotelID=3074&username=WBEPlus&password=Jru4WrSx', array(), '1.0.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'hopa_wbe' );
+//add_action( 'wp_enqueue_scripts', 'hopa_wbe' );
 
 /**
  * Remove <p> Tag From Contact Form 7.
