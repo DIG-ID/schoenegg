@@ -40,7 +40,16 @@
 				);
 				$sanitized_code = wp_kses( $iframe, $allowed_html );
 				if ( $sanitized_code ) :
+					// The webcam (Roundshot) sets Google Analytics cookies, so Cookiebot only loads it after statistics consent.
+					// data-no-lazy keeps WP Rocket from rewriting the iframe, which would bypass the Cookiebot block.
+					$sanitized_code = preg_replace( '/<iframe\b([^>]*?)\ssrc=/i', '<iframe class="cookieconsent-optin-statistics" data-cookieconsent="statistics" data-no-lazy="1"$1 data-cookieblock-src=', $sanitized_code );
 					echo $sanitized_code;
+					?>
+					<div class="cookieconsent-optout-statistics" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; min-height:300px; padding:30px; text-align:center; background:#f5f5f5;">
+						<p><?php esc_html_e( 'To view the live webcam, please accept statistics cookies.', 'hs' ); ?></p>
+						<a class="btn__secondary" href="javascript:Cookiebot.renew()"><?php esc_html_e( 'Change cookie settings', 'hs' ); ?></a>
+					</div>
+					<?php
 				endif;
 				?>
 			</div>
