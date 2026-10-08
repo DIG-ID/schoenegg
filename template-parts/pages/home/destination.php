@@ -46,8 +46,8 @@
 					echo $sanitized_code;
 					?>
 					<div class="cookieconsent-optout-statistics" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; min-height:300px; padding:30px; text-align:center; background:#f5f5f5;">
-						<p><?php esc_html_e( 'To view the live webcam, please accept statistics cookies.', 'hs' ); ?></p>
-						<a class="btn__secondary" href="javascript:Cookiebot.renew()"><?php esc_html_e( 'Change cookie settings', 'hs' ); ?></a>
+						<p><?php esc_html_e( 'Um die Live-Webcam anzusehen, akzeptieren Sie bitte die Statistik-Cookies.', 'hs' ); ?></p>
+						<a class="btn__secondary" style="width:auto; max-width:100%; white-space:normal; line-height:1.4; padding-top:.6rem; padding-bottom:.6rem;" href="javascript:Cookiebot.renew()"><?php esc_html_e( 'Cookie-Einstellungen ändern', 'hs' ); ?></a>
 					</div>
 					<?php
 				endif;
