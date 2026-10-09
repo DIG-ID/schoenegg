@@ -189,25 +189,16 @@ function hs_theme_enqueue_styles() {
 	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
 
 	if ( is_page_template( 'page-templates/page-contact.php' ) || is_admin() ) :
-		wp_enqueue_script( 'google-map-settings', get_stylesheet_directory_uri() . '/assets/js/google-maps.js', array( 'jquery' ), $theme_version, true );
-		wp_enqueue_script( 'google-map-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBAZN5TfX1aWmjodZ4e_6sOcaJV4D59jfo&callback=initMap', array(), $theme_version, true );
+		// The Maps API itself is not enqueued: google-maps.js loads it only after marketing consent (Cookiebot).
+		$maps_js = get_stylesheet_directory() . '/assets/js/google-maps.js';
+		wp_enqueue_script( 'google-map-settings', get_stylesheet_directory_uri() . '/assets/js/google-maps.js', array( 'jquery' ), (string) filemtime( $maps_js ), true );
+		wp_localize_script( 'google-map-settings', 'hsMaps', array(
+			'apiUrl' => 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBAZN5TfX1aWmjodZ4e_6sOcaJV4D59jfo&callback=initMap',
+		) );
 	endif;
 }
 
 add_action( 'wp_enqueue_scripts', 'hs_theme_enqueue_styles' );
-
-/**
- * Only load the Google Maps API after marketing consent.
- * Cookiebot activates scripts with type="text/plain" and data-cookieconsent once the visitor accepts;
- * nowprocket keeps WP Rocket from rewriting the tag, which would bypass the Cookiebot block.
- */
-function hs_google_maps_consent( $tag, $handle ) {
-	if ( 'google-map-api' !== $handle || is_admin() ) {
-		return $tag;
-	}
-	return str_replace( '<script ', '<script type="text/plain" data-cookieconsent="marketing" nowprocket ', $tag );
-}
-add_filter( 'script_loader_tag', 'hs_google_maps_consent', 10, 2 );
 
 /**
  * Load Contact Form 7's reCAPTCHA only on pages that contain a form.

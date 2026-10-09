@@ -175,7 +175,6 @@ function getMarkerImageUrl() {
   }
   
   // Render maps once the Google Maps API is available.
-  // The API is only loaded after cookie consent (Cookiebot), so it can arrive after page load.
   function renderMaps() {
     if ( typeof google === 'undefined' || ! google.maps ) {
       return;
@@ -192,6 +191,30 @@ function getMarkerImageUrl() {
   // Callback of the Maps API script (&callback=initMap).
   window.initMap = renderMaps;
 
-  $( renderMaps );
+  // The Maps API is only loaded after marketing consent (Cookiebot).
+  // The map container is shown before the API loads, so Google never draws into a hidden (zero-size) element.
+  var apiRequested = false;
+
+  function loadMapsIfConsented() {
+    if ( apiRequested || ! window.Cookiebot || ! Cookiebot.consent || ! Cookiebot.consent.marketing ) {
+      return;
+    }
+    if ( ! $('.acf-map').length || ! window.hsMaps ) {
+      return;
+    }
+    apiRequested = true;
+
+    $('.hs-map-placeholder').hide();
+    $('.acf-map').show();
+
+    var script = document.createElement('script');
+    script.src = hsMaps.apiUrl;
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  window.addEventListener( 'CookiebotOnConsentReady', loadMapsIfConsented );
+  window.addEventListener( 'CookiebotOnAccept', loadMapsIfConsented );
+  $( loadMapsIfConsented );
   
   })(jQuery);
