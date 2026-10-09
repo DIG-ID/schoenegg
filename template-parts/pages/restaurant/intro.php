@@ -43,7 +43,24 @@
                 <?php
                 $table_reservation_script = get_field('intro_table_reservation_script');
                 if ($table_reservation_script) {
+                    // OpenTable widget: Cookiebot only runs the script after marketing consent.
+                    // nowprocket keeps WP Rocket from rewriting the tag, which would bypass the Cookiebot block.
+                    $table_reservation_script = preg_replace_callback(
+                        '/<script\b[^>]*>/i',
+                        function ( $m ) {
+                            $tag = preg_replace( '/\stype=(["\'])[^"\']*\1/i', '', $m[0] );
+                            return preg_replace( '/^<script\b/i', '<script type="text/plain" data-cookieconsent="marketing" nowprocket', $tag );
+                        },
+                        $table_reservation_script
+                    );
                     echo $table_reservation_script;
+                    ?>
+                    <div class="cookieconsent-optout-marketing" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; padding:30px; text-align:center; background:#f5f5f5;">
+                        <p><?php esc_html_e( 'Um online einen Tisch zu reservieren, akzeptieren Sie bitte die Marketing-Cookies.', 'hs' ); ?></p>
+                        <a class="btn__secondary" style="width:auto; max-width:100%; white-space:normal; line-height:1.4; padding-top:.6rem; padding-bottom:.6rem;" href="javascript:Cookiebot.renew()"><?php esc_html_e( 'Reservierung laden', 'hs' ); ?></a>
+                        <p><?php esc_html_e( 'Oder reservieren Sie telefonisch unter', 'hs' ); ?> <a href="tel:+41338553422">+41 33 855 34 22</a>.</p>
+                    </div>
+                    <?php
                 }
                 ?>
                 </div>
