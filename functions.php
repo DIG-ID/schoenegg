@@ -196,6 +196,32 @@ function hs_theme_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'hs_theme_enqueue_styles' );
 
+/**
+ * Only load the Google Maps API after marketing consent.
+ * Cookiebot activates scripts with type="text/plain" and data-cookieconsent once the visitor accepts;
+ * nowprocket keeps WP Rocket from rewriting the tag, which would bypass the Cookiebot block.
+ */
+function hs_google_maps_consent( $tag, $handle ) {
+	if ( 'google-map-api' !== $handle || is_admin() ) {
+		return $tag;
+	}
+	return str_replace( '<script ', '<script type="text/plain" data-cookieconsent="marketing" nowprocket ', $tag );
+}
+add_filter( 'script_loader_tag', 'hs_google_maps_consent', 10, 2 );
+
+/**
+ * Load Contact Form 7's reCAPTCHA only on pages that contain a form.
+ * The forms are output from ACF fields (contact and voucher templates), not from the post content.
+ */
+function hs_limit_recaptcha() {
+	if ( is_singular() && ( get_field( 'contacts_form_shortcode' ) || get_field( 'content_contact_form_shortcode' ) ) ) {
+		return;
+	}
+	wp_dequeue_script( 'google-recaptcha' );
+	wp_dequeue_script( 'wpcf7-recaptcha' );
+}
+add_action( 'wp_enqueue_scripts', 'hs_limit_recaptcha', 99 );
+
 //Google Map Init
 function hs_theme_google_map_init() {
 	if ( is_admin() ) :

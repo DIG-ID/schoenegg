@@ -13,6 +13,9 @@
 				<div class="">
 					<?php
 					$iframe = get_field( 'intro_trustyou' );
+					// The TrustYou seal is a third-party iframe, so Cookiebot only loads it after marketing consent.
+					// data-no-lazy keeps WP Rocket from rewriting the iframe, which would bypass the Cookiebot block.
+					$iframe = preg_replace( '/<iframe\b([^>]*?)\ssrc=/i', '<iframe class="cookieconsent-optin-marketing" data-cookieconsent="marketing" data-no-lazy="1"$1 data-cookieblock-src=', (string) $iframe );
 					echo $iframe; ?>
 				</div>
 			</div>

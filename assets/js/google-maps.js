@@ -1,5 +1,4 @@
 (function( $ ) {
-    window.initMap = function(){}
   /**
    * initMap
    *
@@ -175,11 +174,24 @@ function getMarkerImageUrl() {
     }
   }
   
-  // Render maps on page load.
-  $(document).on( 'ready', () => {
+  // Render maps once the Google Maps API is available.
+  // The API is only loaded after cookie consent (Cookiebot), so it can arrive after page load.
+  function renderMaps() {
+    if ( typeof google === 'undefined' || ! google.maps ) {
+      return;
+    }
     $('.acf-map').each(function(){
-      var map = initMap( $(this) );
+      if ( $(this).data('rendered') ) {
+        return;
+      }
+      $(this).data('rendered', true);
+      initMap( $(this) );
     });
-  });
+  }
+
+  // Callback of the Maps API script (&callback=initMap).
+  window.initMap = renderMaps;
+
+  $( renderMaps );
   
   })(jQuery);

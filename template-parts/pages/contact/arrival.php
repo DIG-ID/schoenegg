@@ -25,8 +25,13 @@
         $location = get_field( 'arrival_map' );
         if ( $location ) :
             ?>
-            <div class="acf-map mb-14 md:mb-20 xl:mb-0 h-[450px]" data-zoom="16">
+            <div class="acf-map cookieconsent-optin-marketing mb-14 md:mb-20 xl:mb-0 h-[450px]" data-zoom="16">
                 <div class="marker" data-lat="<?php echo esc_attr( $location['lat'] ); ?>" data-lng="<?php echo esc_attr( $location['lng'] ); ?>"></div>
+            </div>
+            <?php // Shown by Cookiebot until marketing consent is given; the Maps API is blocked until then (see functions.php). ?>
+            <div class="cookieconsent-optout-marketing mb-14 md:mb-20 xl:mb-0" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; height:450px; padding:30px; text-align:center; background:#f5f5f5;">
+                <p><?php esc_html_e( 'Um die Karte anzuzeigen, akzeptieren Sie bitte die Marketing-Cookies.', 'hs' ); ?></p>
+                <a class="btn__secondary" style="width:auto; max-width:100%; white-space:normal; line-height:1.4; padding-top:.6rem; padding-bottom:.6rem;" href="javascript:Cookiebot.renew()"><?php esc_html_e( 'Karte laden', 'hs' ); ?></a>
             </div>
             <?php
         endif;
